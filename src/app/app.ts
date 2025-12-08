@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { HibridForm } from './hibrid-form/hibrid-form';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [HibridForm],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
