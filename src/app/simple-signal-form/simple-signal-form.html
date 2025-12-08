@@ -1,0 +1,30 @@
+<div class="title">Simple Signal Form</div>
+
+<form class="name-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Enter first name" [ngModel]="firstName()" name="firstName"
+            (ngModelChange)="firstName.set($event)" (blur)="firstNameTouched.set(true)" required
+            [errorStateMatcher]="firstNameErrorMatcher" />
+        <mat-error>{{ firstNameError() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Enter last name" [ngModel]="lastName()" name="lastName"
+            (ngModelChange)="lastName.set($event)" (blur)="lastNameTouched.set(true)" required
+            [errorStateMatcher]="lastNameErrorMatcher" />
+        <mat-error>{{ lastNameError() }}</mat-error>
+    </mat-form-field>
+
+    @if (!firstNameError() && !lastNameError()) {
+    <div class="response-container">
+        <div class="greeting-title">👋 Hello!</div>
+        <div class="greeting-name">
+            {{ fullName()}}
+        </div>
+    </div>
+    }
+
+</form>
