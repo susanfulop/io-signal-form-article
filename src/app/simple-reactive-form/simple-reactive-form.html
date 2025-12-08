@@ -1,0 +1,51 @@
+<div class="title">Simple Reactive Form</div>
+
+<form class="name-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput [formControl]="firstName" placeholder="Enter first name" required />
+
+        @if (firstName.hasError('required')) {
+        <mat-error>First Name is required</mat-error>
+        }
+
+        @if (firstName.hasError('minlength')) {
+        <mat-error>Minimum 3 characters required</mat-error>
+        }
+
+        @if (firstName.hasError('maxlength')) {
+        <mat-error>Maximum 30 characters required</mat-error>
+        }
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput [formControl]="lastName" placeholder="Enter last name" required />
+
+        @if (lastName.hasError('required')) {
+        <mat-error>Last Name is required</mat-error>
+        }
+
+        @if (lastName.hasError('minlength')) {
+        <mat-error>Minimum 3 characters required</mat-error>
+        }
+
+        @if (lastName.hasError('maxlength')) {
+        <mat-error>Maximum 30 characters required</mat-error>
+        }
+    </mat-form-field>
+
+
+    @if (firstName.valid && lastName.valid) {
+    <div class="response-container">
+        <div class="greeting-title">👋 Hello!</div>
+        <div class="greeting-name">
+            {{ firstName.value }} {{ lastName.value }}
+        </div>
+    </div>
+    }
+
+</form>
