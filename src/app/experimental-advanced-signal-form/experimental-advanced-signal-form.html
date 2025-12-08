@@ -1,0 +1,40 @@
+<div class="title">Advanced Signal Form (EXPERIMENTAL API)</div>
+
+<form class="name-form">
+
+    <mat-form-field appearance="outline" class="full-width" subscriptSizing="dynamic">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" placeholder="Enter first name" [field]="nameForm.firstName" />
+    </mat-form-field>
+    @let firstNameerrors = nameForm.firstName().errors();
+    @let firstNameTouched = nameForm.firstName().touched();
+
+    @if (firstNameTouched && firstNameerrors && firstNameerrors.length > 0) {
+    @for (error of firstNameerrors; track error) {
+    <mat-error>{{ error.message }}</mat-error>
+    }
+    }
+
+    <mat-form-field appearance="outline" class="full-width" subscriptSizing="dynamic">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" placeholder="Enter last name" [field]="nameForm.lastName" />
+    </mat-form-field>
+
+    @let lastNameerrors = nameForm.lastName().errors();
+    @let lastNameTouched = nameForm.lastName().touched();
+
+    @if (lastNameTouched && lastNameerrors && lastNameerrors.length > 0) {
+    @for (error of lastNameerrors; track error) {
+    <mat-error>{{ error.message }}</mat-error>
+    }
+    }
+
+    @if (nameForm().valid()) {
+    <div class="response-container">
+        <div class="greeting-title">👋 Hello!</div>
+        <div class="greeting-name">
+            {{ nameForm.firstName().value() }} {{ nameForm.lastName().value() }}
+        </div>
+    </div>
+    }
+</form>
