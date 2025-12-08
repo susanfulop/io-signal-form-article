@@ -47,8 +47,8 @@
     <mat-form-field appearance="outline" class="full-width">
         <mat-label>iO Campus</mat-label>
         <mat-select formControlName="campus" required>
-            @for (office of offices; track office) {
-            <mat-option [value]="office">{{ office }}</mat-option>
+            @for (campus of campus_locations; track campus) {
+            <mat-option [value]="campus">{{ campus }}</mat-option>
             }
         </mat-select>
 

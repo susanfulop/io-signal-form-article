@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class AdvancedReactiveForm {
 
-  offices = ['Amsterdam', 'Utrecht', 'Eindhoven', 'Hertogenbosch', 'Rotterdams']
+  campus_locations = ['Amsterdam', 'Utrecht', 'Eindhoven', 'Hertogenbosch', 'Rotterdam']
   form = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
