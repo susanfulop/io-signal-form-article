@@ -1,0 +1,72 @@
+<div class="title">Advanced Reactive Form (most used one)</div>
+
+<form [formGroup]="form" class="name-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="Enter first name" required />
+        @if (form.errors?.['required']) {
+        <mat-error>First Name is required</mat-error>
+        }
+        @if (form.get('firstName')?.hasError('minlength')) {
+        <mat-error>Minimum characters required</mat-error>
+        }
+        @if (form.get('firstName')?.hasError('maxlength')) {
+        <mat-error>Maximum 30 characters required</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Enter last name" required />
+        @if (form.errors?.['required']) {
+        <mat-error>Last Name is required</mat-error>
+        }
+        @if (form.get('lastName')?.hasError('minlength')) {
+        <mat-error>Minimum 3 characters required</mat-error>
+        }
+        @if (form.get('lastName')?.hasError('maxlength')) {
+        <mat-error>Maximum 30 characters required</mat-error>
+        }
+
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Age</mat-label>
+        <input formControlName="age" matInput type="number" placeholder="Enter age" required />
+
+        @if (form.errors?.['required']) {
+        <mat-error>Age required</mat-error>
+        }
+        @if (form.get('age')?.hasError('min') || form.get('age')?.hasError('max')) {
+        <mat-error> Age must be between 0 and 99</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>iO Campus</mat-label>
+        <mat-select formControlName="campus" required>
+            @for (office of offices; track office) {
+            <mat-option [value]="office">{{ office }}</mat-option>
+            }
+        </mat-select>
+
+        @if (form.get('campus')?.hasError('required')) {
+        <mat-error>Campus needs to be selected</mat-error>
+        }
+    </mat-form-field>
+
+    @if (form.valid){
+    <div class="response-container">
+        <div class="greeting-title">👋 Hello!</div>
+        <div class="greeting-name">
+            <div class="greeting-name">
+                {{ form.get('firstName')?.value }} {{ form.get('lastName')?.value }}, {{ form.get('campus')?.value }} -
+                Age: {{ form.get('age')?.value }}
+            </div>
+        </div>
+    </div>
+    }
+
+</form>
