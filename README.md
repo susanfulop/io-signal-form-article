@@ -7,4 +7,4 @@ This repository contains the materials for the following article:
 If you follow the article you can find the **separate examples on seprate branches**. 
 
 Some of the syntax may look a bit unfamiliar at first — the code was written in **Angular 21**. 
-# Welcome
+
